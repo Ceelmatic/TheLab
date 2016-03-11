@@ -2,3 +2,4 @@ _site
 .idea
 node_modules
 NOTES.md
+assets/js/umd
