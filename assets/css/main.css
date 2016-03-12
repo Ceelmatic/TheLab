@@ -1,3 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,700,400italic,300);
 body {
-  font-family: 'Fira Sans', sans-serif; }
+  font-family: 'Fira Sans', sans-serif;
+  background-color: pink; }
+
+.lead-inline {
+  display: inline;
+  float: left; }
+
+.list-jumbotron {
+  font-size: 1.25rem; }
+
+.list-inline-item a:hover {
+  text-decoration: none; }
+
+.list-inline-item:first-child {
+  margin-left: 5px; }
