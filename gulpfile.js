@@ -41,17 +41,16 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
 gulp.task('sass', function () {
-    return gulp.src('assets/css/*.scss')
+    return gulp.src('assets/css/main.scss')
         .pipe(sass({
             includePaths: ['css'],
             onError: browserSync.notify
         }))
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(gulp.dest('_site/asset/scss'))
-        .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest('assets/css'));
+        .pipe(gulp.dest('assets/css'))
+        .pipe(browserSync.reload({stream:true}));
 });
-
 
 /**
 * Transform jade files into html
@@ -67,9 +66,10 @@ gulp.task('jade', function(){
  * Watch html/md/jade files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch('assets/css/**', ['sass']);
     gulp.watch('_jadefiles/*.jade', ['jade']);
-    gulp.watch(['*.html', '_layouts/*', '_includes/*'], ['jekyll-rebuild']);
+    gulp.watch('assets/css/**', ['sass']);
+    gulp.watch('assets/js/**', ['jekyll-rebuild']);
+    gulp.watch(['index.html', '_layouts/*', '_includes/*', 'assets/css/*'], ['jekyll-rebuild']);
 });
 
 /**
